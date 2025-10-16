@@ -84,3 +84,45 @@ class TestMainPageNavigation:
         # Проверяем что кнопка существует
         buttons = page.locator(main_page.POPUP_MAGNIT_BUTTON)
         assert buttons.count() >= 1
+
+    @allure.story("Slider Arrow Right")
+    def test_slider_arrow_right_exists(self, page: Page, base_url):
+        main_page = MainPage(page)
+        main_page.navigate_to(base_url)
+
+        # Проверяем что правые стрелки слайдера существуют
+        arrows = page.locator(main_page.SLIDER_ARROW_RIGHT)
+        assert arrows.count() >= 1
+
+    @allure.story("Slider Arrow Left")
+    def test_slider_arrow_left_exists(self, page: Page, base_url):
+        main_page = MainPage(page)
+        main_page.navigate_to(base_url)
+
+        # Проверяем что левые стрелки слайдера существуют
+        arrows = page.locator(main_page.SLIDER_ARROW_LEFT)
+        assert arrows.count() >= 1
+
+    @allure.story("Slider Navigation")
+    def test_slider_right_arrow_click(self, page: Page, base_url):
+        main_page = MainPage(page)
+        main_page.navigate_to(base_url)
+
+        # Кликаем по правой стрелке и проверяем что клик прошел
+        arrow = page.locator(main_page.SLIDER_ARROW_RIGHT).first
+        arrow.click()
+
+        # Проверяем что страница осталась той же (нет ошибок)
+        assert page.title()
+
+    @allure.story("Slider Navigation")
+    def test_slider_left_arrow_click(self, page: Page, base_url):
+        main_page = MainPage(page)
+        main_page.navigate_to(base_url)
+
+        # Кликаем по левой стрелке и проверяем что клик прошел
+        arrow = page.locator(main_page.SLIDER_ARROW_LEFT).first
+        arrow.click()
+
+        # Проверяем что страница осталась той же (нет ошибок)
+        assert page.title()
