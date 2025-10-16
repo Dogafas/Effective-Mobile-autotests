@@ -75,3 +75,12 @@ class TestMainPageNavigation:
 
         current_url = main_page.get_current_url()
         assert "#moreinfo" in current_url
+
+    @allure.story("Magnit Popup Button")
+    def test_magnit_popup_button_exists(self, page: Page, base_url):
+        main_page = MainPage(page)
+        main_page.navigate_to(base_url)
+
+        # Проверяем что кнопка существует
+        buttons = page.locator(main_page.POPUP_MAGNIT_BUTTON)
+        assert buttons.count() >= 1

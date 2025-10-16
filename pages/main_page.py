@@ -10,6 +10,7 @@ class MainPage(BasePage):
     REVIEWS_LINK = "a.tn-atom[href='#Reviews']"
     SPECIALISTS_LINK = "a.tn-atom[href='#specialists']"
     MORE_INFO_LINK = "a.tn-atom[href='#moreinfo']:has-text('Подробнее')"
+    POPUP_MAGNIT_BUTTON = "a[href='#popup:magnit'] td[data-field='li_buttontitle']"
 
     def click_about_us(self):
         self.click_element(self.ABOUT_US_LINK)
@@ -31,3 +32,6 @@ class MainPage(BasePage):
 
     def click_more_info(self):
         self.click_element(self.MORE_INFO_LINK)
+
+    def click_magnit_popup(self):
+        self.click_element(self.POPUP_MAGNIT_BUTTON)
