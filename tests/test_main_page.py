@@ -171,3 +171,16 @@ class TestMainPageNavigation:
 
         # Проверяем что страница осталась стабильной
         assert page.title()
+
+    @allure.story("Telegram Link")
+    def test_telegram_link_exists(self, page: Page, base_url):
+        main_page = MainPage(page)
+        main_page.navigate_to(base_url)
+
+        # Проверяем что ссылка на Telegram существует
+        link = page.locator(main_page.TELEGRAM_LINK)
+        assert link.count() >= 1
+
+        # Проверяем атрибуты ссылки
+        assert link.first.get_attribute("target") == "_blank"
+        assert link.first.get_attribute("href") == "https://t.me/assistant_em"

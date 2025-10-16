@@ -16,6 +16,7 @@ class MainPage(BasePage):
     POPUP_MYFORM_BUTTON = "a.tn-atom[href='#popup:myform']"
     CAROUSEL_BUTTON_RIGHT = "button.t-slds__arrow-right"
     CAROUSEL_BUTTON_LEFT = "button.t-slds__arrow-left"
+    TELEGRAM_LINK = "a.tn-atom[href='https://t.me/assistant_em']"
 
     def click_about_us(self):
         self.click_element(self.ABOUT_US_LINK)
@@ -55,3 +56,6 @@ class MainPage(BasePage):
 
     def click_carousel_button_left(self):
         self.click_element(self.CAROUSEL_BUTTON_LEFT)
+
+    def click_telegram_link(self):
+        self.click_element(self.TELEGRAM_LINK)
