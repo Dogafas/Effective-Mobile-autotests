@@ -9,6 +9,7 @@ class MainPage(BasePage):
     CASES_LINK = "a.tn-atom[href='#cases']"
     REVIEWS_LINK = "a.tn-atom[href='#Reviews']"
     SPECIALISTS_LINK = "a.tn-atom[href='#specialists']"
+    MORE_INFO_LINK = "a.tn-atom[href='#moreinfo']:has-text('Подробнее')"
 
     def click_about_us(self):
         self.click_element(self.ABOUT_US_LINK)
@@ -27,3 +28,6 @@ class MainPage(BasePage):
 
     def click_specialists(self):
         self.click_element(self.SPECIALISTS_LINK)
+
+    def click_more_info(self):
+        self.click_element(self.MORE_INFO_LINK)

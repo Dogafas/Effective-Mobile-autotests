@@ -65,3 +65,13 @@ class TestMainPageNavigation:
 
         current_url = main_page.get_current_url()
         assert "#specialists" in current_url
+
+    @allure.story("More Info Button Navigation")
+    def test_more_info_navigation(self, page: Page, base_url):
+        main_page = MainPage(page)
+        main_page.navigate_to(base_url)
+
+        main_page.click_more_info()
+
+        current_url = main_page.get_current_url()
+        assert "#moreinfo" in current_url
