@@ -17,6 +17,7 @@ class MainPage(BasePage):
     CAROUSEL_BUTTON_RIGHT = "button.t-slds__arrow-right"
     CAROUSEL_BUTTON_LEFT = "button.t-slds__arrow-left"
     TELEGRAM_LINK = "a.tn-atom[href='https://t.me/assistant_em']"
+    TELEGRAM_LINKS_ALL = "a.tn-atom[href^='https://t.me/']"
 
     def click_about_us(self):
         self.click_element(self.ABOUT_US_LINK)

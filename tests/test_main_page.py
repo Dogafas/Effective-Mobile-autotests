@@ -184,3 +184,19 @@ class TestMainPageNavigation:
         # Проверяем атрибуты ссылки
         assert link.first.get_attribute("target") == "_blank"
         assert link.first.get_attribute("href") == "https://t.me/assistant_em"
+
+    @allure.story("All Telegram Links")
+    def test_all_telegram_links_exist(self, page: Page, base_url):
+        main_page = MainPage(page)
+        main_page.navigate_to(base_url)
+
+        # Проверяем что есть Telegram ссылки на странице
+        links = page.locator(main_page.TELEGRAM_LINKS_ALL)
+        assert links.count() >= 1
+
+        # Проверяем что все ссылки имеют правильные атрибуты
+        for i in range(links.count()):
+            link = links.nth(i)
+            assert link.get_attribute("target") == "_blank"
+            href = link.get_attribute("href")
+            assert href is not None and "https://t.me/" in href
