@@ -200,3 +200,19 @@ class TestMainPageNavigation:
             assert link.get_attribute("target") == "_blank"
             href = link.get_attribute("href")
             assert href is not None and "https://t.me/" in href
+
+    @allure.story("Email Link")
+    def test_email_link_exists(self, page: Page, base_url):
+        main_page = MainPage(page)
+        main_page.navigate_to(base_url)
+
+        # Проверяем что email ссылка существует
+        link = page.locator(main_page.EMAIL_LINK)
+        assert link.count() >= 1
+
+        # Проверяем атрибуты ссылки
+        assert link.first.get_attribute("target") == "_blank"
+        assert (
+            link.first.get_attribute("href")
+            == "mailto:dariia.krasnikova@effectivemobile.ru"
+        )

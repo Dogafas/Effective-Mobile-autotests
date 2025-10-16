@@ -18,6 +18,7 @@ class MainPage(BasePage):
     CAROUSEL_BUTTON_LEFT = "button.t-slds__arrow-left"
     TELEGRAM_LINK = "a.tn-atom[href='https://t.me/assistant_em']"
     TELEGRAM_LINKS_ALL = "a.tn-atom[href^='https://t.me/']"
+    EMAIL_LINK = "a.tn-atom[href='mailto:dariia.krasnikova@effectivemobile.ru']"
 
     def click_about_us(self):
         self.click_element(self.ABOUT_US_LINK)
@@ -60,3 +61,6 @@ class MainPage(BasePage):
 
     def click_telegram_link(self):
         self.click_element(self.TELEGRAM_LINK)
+
+    def click_email_link(self):
+        self.click_element(self.EMAIL_LINK)
