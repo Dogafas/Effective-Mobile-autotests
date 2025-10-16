@@ -147,3 +147,27 @@ class TestMainPageNavigation:
 
         # Проверяем что клик прошел без ошибок
         assert page.title()
+
+    @allure.story("Carousel Button Click")
+    def test_carousel_button_right_click(self, page: Page, base_url):
+        main_page = MainPage(page)
+        main_page.navigate_to(base_url)
+
+        # Кликаем по кнопке карусели и проверяем что клик прошел
+        button = page.locator(main_page.CAROUSEL_BUTTON_RIGHT).first
+        button.click()
+
+        # Проверяем что страница осталась стабильной
+        assert page.title()
+
+    @allure.story("Carousel Button Click")
+    def test_carousel_button_left_click(self, page: Page, base_url):
+        main_page = MainPage(page)
+        main_page.navigate_to(base_url)
+
+        # Кликаем по левой кнопке карусели и проверяем что клик прошел
+        button = page.locator(main_page.CAROUSEL_BUTTON_LEFT).first
+        button.click()
+
+        # Проверяем что страница осталась стабильной
+        assert page.title()

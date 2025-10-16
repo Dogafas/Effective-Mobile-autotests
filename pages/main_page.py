@@ -14,6 +14,8 @@ class MainPage(BasePage):
     SLIDER_ARROW_RIGHT = ".t-slds__arrow_body-right"
     SLIDER_ARROW_LEFT = ".t-slds__arrow_body-left"
     POPUP_MYFORM_BUTTON = "a.tn-atom[href='#popup:myform']"
+    CAROUSEL_BUTTON_RIGHT = "button.t-slds__arrow-right"
+    CAROUSEL_BUTTON_LEFT = "button.t-slds__arrow-left"
 
     def click_about_us(self):
         self.click_element(self.ABOUT_US_LINK)
@@ -47,3 +49,9 @@ class MainPage(BasePage):
 
     def click_myform_popup(self):
         self.click_element(self.POPUP_MYFORM_BUTTON)
+
+    def click_carousel_button_right(self):
+        self.click_element(self.CAROUSEL_BUTTON_RIGHT)
+
+    def click_carousel_button_left(self):
+        self.click_element(self.CAROUSEL_BUTTON_LEFT)
