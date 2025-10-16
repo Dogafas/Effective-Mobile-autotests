@@ -126,3 +126,24 @@ class TestMainPageNavigation:
 
         # Проверяем что страница осталась той же (нет ошибок)
         assert page.title()
+
+    @allure.story("MyForm Popup Button")
+    def test_myform_popup_button_exists(self, page: Page, base_url):
+        main_page = MainPage(page)
+        main_page.navigate_to(base_url)
+
+        # Проверяем что кнопка myform попапа существует
+        buttons = page.locator(main_page.POPUP_MYFORM_BUTTON)
+        assert buttons.count() >= 1
+
+    @allure.story("MyForm Popup Button Click")
+    def test_myform_popup_button_click(self, page: Page, base_url):
+        main_page = MainPage(page)
+        main_page.navigate_to(base_url)
+
+        # Кликаем по кнопке myform попапа
+        button = page.locator(main_page.POPUP_MYFORM_BUTTON).first
+        button.click()
+
+        # Проверяем что клик прошел без ошибок
+        assert page.title()

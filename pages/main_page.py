@@ -13,6 +13,7 @@ class MainPage(BasePage):
     POPUP_MAGNIT_BUTTON = "a[href='#popup:magnit'] td[data-field='li_buttontitle']"
     SLIDER_ARROW_RIGHT = ".t-slds__arrow_body-right"
     SLIDER_ARROW_LEFT = ".t-slds__arrow_body-left"
+    POPUP_MYFORM_BUTTON = "a.tn-atom[href='#popup:myform']"
 
     def click_about_us(self):
         self.click_element(self.ABOUT_US_LINK)
@@ -43,3 +44,6 @@ class MainPage(BasePage):
 
     def click_slider_arrow_left(self):
         self.click_element(self.SLIDER_ARROW_LEFT)
+
+    def click_myform_popup(self):
+        self.click_element(self.POPUP_MYFORM_BUTTON)
