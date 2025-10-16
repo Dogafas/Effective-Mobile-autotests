@@ -19,6 +19,12 @@ class MainPage(BasePage):
     TELEGRAM_LINK = "a.tn-atom[href='https://t.me/assistant_em']"
     TELEGRAM_LINKS_ALL = "a.tn-atom[href^='https://t.me/']"
     EMAIL_LINK = "a.tn-atom[href='mailto:dariia.krasnikova@effectivemobile.ru']"
+    # Form elements
+    FORM_NAME_INPUT = "#nm-1531306243545"
+    FORM_PHONE_INPUT = "#input_1531306540094"
+    FORM_TELEGRAM_INPUT = "#in-1680516575724"
+    FORM_MESSAGE_TEXTAREA = "#ta-1680516600617"
+    FORM_SUBMIT_BUTTON = "button.t-submit"
 
     def click_about_us(self):
         self.click_element(self.ABOUT_US_LINK)
@@ -64,3 +70,12 @@ class MainPage(BasePage):
 
     def click_email_link(self):
         self.click_element(self.EMAIL_LINK)
+
+    def fill_contact_form(self, name: str, phone: str, telegram: str, message: str):
+        self.page.fill(self.FORM_NAME_INPUT, name)
+        self.page.fill(self.FORM_PHONE_INPUT, phone)
+        self.page.fill(self.FORM_TELEGRAM_INPUT, telegram)
+        self.page.fill(self.FORM_MESSAGE_TEXTAREA, message)
+
+    def submit_contact_form(self):
+        self.click_element(self.FORM_SUBMIT_BUTTON)
