@@ -27,6 +27,11 @@ RUN apt-get update && apt-get install -y \
     libpango-1.0-0 \
     libpangocairo-1.0-0 \
     libcairo2 \
+    libxcursor1 \
+    libgtk-3-0 \
+    libcairo-gobject2 \
+    libgdk-pixbuf-xlib-2.0-0 \
+    libdbus-glib-1-2 \
     && rm -rf /var/lib/apt/lists/*
 
 # Рабочая директория
@@ -40,7 +45,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Установим Playwright и браузеры
 RUN pip install playwright pytest pytest-playwright allure-pytest && \
-    playwright install chromium
+    playwright install chromium firefox
 
 # Скопируем проект
 COPY . .

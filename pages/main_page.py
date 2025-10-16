@@ -3,11 +3,11 @@ from .base_page import BasePage
 
 class MainPage(BasePage):
     # Локаторы для основных разделов
-    ABOUT_US_LINK = "text=О нас"
-    CONTACTS_LINK = "text=Контакты"
-    SERVICES_LINK = "text=Услуги"
-    CASES_LINK = "text=Кейсы"
-    REVIEWS_LINK = "text=Отзывы"
+    ABOUT_US_LINK = "a.tn-atom[href='#about']"
+    CONTACTS_LINK = "a.tn-atom[href='#contacts']"
+    SERVICES_LINK = "a.tn-atom[href='#moreinfo']"
+    CASES_LINK = "a.tn-atom[href='#cases']"
+    REVIEWS_LINK = "a.tn-atom[href='#Reviews']"
 
     def click_about_us(self):
         self.click_element(self.ABOUT_US_LINK)

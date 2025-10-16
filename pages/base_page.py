@@ -7,9 +7,10 @@ class BasePage:
 
     def navigate_to(self, url: str):
         self.page.goto(url)
+        self.page.wait_for_load_state("networkidle")
 
     def click_element(self, locator: str):
-        self.page.click(locator)
+        self.page.click(locator, timeout=10000)
 
     def get_current_url(self) -> str:
         return self.page.url
