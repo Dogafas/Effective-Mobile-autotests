@@ -1,4 +1,4 @@
-.PHONY: help docker-build docker-run docker-stop docker-restart docker-format docker-lint docker-test docker-check-all clean
+.PHONY: help docker-build docker-run docker-stop docker-restart docker-format docker-lint docker-test docker-check-all allure-report allure-stop clean
 
 # Переменные
 IMAGE_NAME = effective-mobile-tests
@@ -32,8 +32,20 @@ docker-stop: ## Остановить контейнер
 
 docker-restart: docker-stop docker-run ## Перезапустить контейнер
 
+allure-report: ## Сгенерировать отчет Allure
+	docker stop allure-service || true
+	docker run --rm -d --name allure-service -p 4040:5050 -e CHECK_RESULTS_EVERY_SECONDS=3 -e KEEP_HISTORY=1 -v $$(pwd)/allure-results:/app/allure-results frankescobar/allure-docker-service:latest
+	@echo "Ожидание запуска сервиса..."
+	@sleep 5
+	@echo "Отчет доступен по адресу: http://localhost:4040/allure-docker-service/projects/default/reports/latest/index.html"
+	@echo "Для остановки сервиса: make allure-stop"
+
+allure-stop: ## Остановить Allure сервис
+	docker stop allure-service || true
+
 clean: ## Очистить временные файлы
 	rm -rf allure-results/
+	rm -rf allure-report/
 	rm -rf .pytest_cache/
 	find . -type d -name __pycache__ -exec rm -rf {} +
 	find . -type f -name "*.pyc" -delete
